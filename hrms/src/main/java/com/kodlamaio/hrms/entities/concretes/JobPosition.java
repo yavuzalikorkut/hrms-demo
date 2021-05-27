@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="job_position")
+@Table(name="job_positions")
 @NoArgsConstructor
 @AllArgsConstructor
 
