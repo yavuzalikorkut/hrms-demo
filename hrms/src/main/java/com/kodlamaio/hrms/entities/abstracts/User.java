@@ -1,56 +1,52 @@
 package com.kodlamaio.hrms.entities.abstracts;
 
-import java.time.LocalDateTime;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name="users")
+@Table(name = "users")
 
-public class User {
-	
-	public User(String email, String password){
+public abstract class User {
+
+    public User(String email, String password) {
         this.email = email;
-        this.password=password;
+        this.password = password;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private int id;
 
-    @Column(name="uid")
+    @Column(name = "uid")
     private String uid;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-
-    @Column(name="created_date")
-    private LocalDateTime createdDate= LocalDateTime.now();
+    @Column(name = "created_date")
+    private LocalDateTime createdDate = LocalDateTime.now();
 
     @LastModifiedDate
-    @Column(name="updated_date")
+    @Column(name = "updated_date")
     private LocalDateTime updatedDate;
 
-    @Column(name="status")
-    private boolean status;
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
+
+    @Column(name = "is_activated")
+    private boolean isActivated;
 }

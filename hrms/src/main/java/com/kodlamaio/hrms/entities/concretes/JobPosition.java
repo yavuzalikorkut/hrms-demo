@@ -1,5 +1,7 @@
 package com.kodlamaio.hrms.entities.concretes;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +27,22 @@ public class JobPosition {
 	
 	@Column(name="id")
 	private int id;
-	@Column(name="title")
-	private String title;
+	
+    @Column(name="uid")
+    private String uid;
+
+    @Column(name="title")
+    private String title;
+
+    @Column(name="created_date")
+    private LocalDateTime createdDate= LocalDateTime.now();
+
+    @Column(name="updated_date")
+    private LocalDateTime updatedDate;
+
+    @Column(name= "is_deleted")
+    private boolean isDeleted;
+
+    @Column(name="is_activated")
+    private boolean isActivated;
 }
